@@ -61,14 +61,35 @@
 // promise.then((abc) => {console.log(abc)}) //quando a funçao demorada temrinar faça isso 
 
 //////////
+
+// function calculoRapido(n){
+//     // return new Promise((resolve, reject)=>{
+//     //                                          // ou faz return resolve(n*(n+1)/2) que é a mesma coisa q a linha 65 e 67
+//     //     resolve(n/2*(n+1))
+//         return Promise.resolve(n*(n+1)/2)
+//     // })
+// }
+
+// calculoRapido(10).then((res) => console.log(res))
+
+//mesma coisa que o de cima
+// calculoRapido(10)
+// .then((res) => console.log(res)) //se der certo vai cair aqui
+// .catch((erro) => console.log(erro)) //se der erro vai cair aqui
+
+//Outra exemplo:
+
+ //se n>1, produzir a conta conhecida
+ // caso contrario, produzir "somente valores positivos"
+ //usar promises
+ //return new Promise((resolve, reject)=>{
+ //resolver(n/2*(n+1))
+ //}) 
+
 function calculoRapido(n){
-    // return new Promise((resolve, reject)=>{
-    //                                          // ou faz return resolve(n*(n+1)/2) que é a mesma coisa q a linha 65 e 67
-    //     resolve(n/2*(n+1))
-        return Promise.resolve(n*(n+1)/2)
-    // })
+ return n>=1? Promise.resolve(n/2*(n+1)) : Promise.reject("Somente valores positivos")
+
 }
+calculoRapido(-1).then((res) => console.log(res)).catch((reject) => console.log(`Deu erro: ${reject}`)) 
 
-calculoRapido(10).then((res) => console.log(res))
-
-//outra forma
+//////////////////////////////////////////////////////////////////////////////////////////
