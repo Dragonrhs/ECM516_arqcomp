@@ -32,3 +32,30 @@
 
 //////////////////////////////////////////////////////////////////////////////////////
 
+// const calculadoDemorado =(n) =>{
+
+//     let res = 0;
+//     for(let i=1;i<= n; i++) res += i;     //vai ficar bloqueado pois é uma funçao sincrona
+//        return res;
+    
+// }
+// const resultado = calculadoDemorado(10);    
+// console.log(resultado);
+
+//resolvendo usando promise
+
+const calculadoDemorado = (n) =>{
+    let p = new Promise(function(resolve, reject){ //funçao demorada q um dia vai terminar seja com falha ou n 
+
+
+    let res = 0;
+    for(let i=1;i<= n; i++) res += i;     
+       resolve(res)
+
+    })
+       return p;
+}
+
+const promise = calculadoDemorado(10) //coloca a computaçao demorada para funcionar
+//then e catch
+promise.then((abc) => {console.log(abc)}) //quando a funçao demorada temrinar faça isso 
