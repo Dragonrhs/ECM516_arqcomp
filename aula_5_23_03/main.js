@@ -44,18 +44,31 @@
 
 //resolvendo usando promise
 
-const calculadoDemorado = (n) =>{
-    let p = new Promise(function(resolve, reject){ //funçao demorada q um dia vai terminar seja com falha ou n 
+// const calculadoDemorado = (n) =>{
+//     let p = new Promise(function(resolve, reject){ //funçao demorada q um dia vai terminar seja com falha ou n 
 
 
-    let res = 0;
-    for(let i=1;i<= n; i++) res += i;     
-       resolve(res)
+//     let res = 0;
+//     for(let i=1;i<= n; i++) res += i;     
+//        resolve(res)
 
-    })
-       return p;
+//     })
+//        return p;
+// }
+
+// const promise = calculadoDemorado(10) //coloca a computaçao demorada para funcionar
+// //then e catch
+// promise.then((abc) => {console.log(abc)}) //quando a funçao demorada temrinar faça isso 
+
+//////////
+function calculoRapido(n){
+    // return new Promise((resolve, reject)=>{
+    //                                          // ou faz return resolve(n*(n+1)/2) que é a mesma coisa q a linha 65 e 67
+    //     resolve(n/2*(n+1))
+        return Promise.resolve(n*(n+1)/2)
+    // })
 }
 
-const promise = calculadoDemorado(10) //coloca a computaçao demorada para funcionar
-//then e catch
-promise.then((abc) => {console.log(abc)}) //quando a funçao demorada temrinar faça isso 
+calculoRapido(10).then((res) => console.log(res))
+
+//outra forma
