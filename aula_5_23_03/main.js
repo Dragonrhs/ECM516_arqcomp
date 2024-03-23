@@ -77,6 +77,16 @@
 // .then((res) => console.log(res)) //se der certo vai cair aqui
 // .catch((erro) => console.log(erro)) //se der erro vai cair aqui
 
+//pode encadear e nao crescer com o raduken
+
+// calculoRapido(10)
+// .then((res) => {console.log(res))
+// return Promise.resolve(res+1)
+
+// .then((res) => {console.log(res))
+// return Promise.resolve(res+2)
+
+
 //Outra exemplo:
 
  //se n>1, produzir a conta conhecida
@@ -86,10 +96,11 @@
  //resolver(n/2*(n+1))
  //}) 
 
-function calculoRapido(n){
- return n>=1? Promise.resolve(n/2*(n+1)) : Promise.reject("Somente valores positivos")
+// function calculoRapido(n){
+//  return n>=1? Promise.resolve(n/2*(n+1)) : Promise.reject("Somente valores positivos")
 
-}
-calculoRapido(-1).then((res) => console.log(res)).catch((reject) => console.log(`Deu erro: ${reject}`)) 
+// }
+// calculoRapido(-1).then((res) => console.log(res)).catch((reject) => console.log(`Deu erro: ${reject}`)) 
 
 //////////////////////////////////////////////////////////////////////////////////////////
+
