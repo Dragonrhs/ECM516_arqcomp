@@ -51,7 +51,7 @@ const lembretes: Record<string, Lembrete> = {
         res.json(lembrete)
     })
 
-    app.post('/lembretes-update', (req, res) => {
+    app.put('/lembretes', (req, res) => {
         const{id, texto} = req.body
         lembretes[id].texto = texto
         res.json(lembretes[id])
