@@ -40,6 +40,14 @@ const lembretes: Record<string, Lembrete> = {
         res.json(lembrete)
     })
 
+    app.post('/lembretes-update', (req, res) => {
+        const{id, texto} = req.body
+        lembretes[id].texto = texto
+        res.json(lembretes[id])
+        console.log(lembretes[id])
+    })  
+
+
 
 const PORT: number = 4000
 app.listen(PORT, () => console.log(`Lembretes. Porta ${PORT}.`))
