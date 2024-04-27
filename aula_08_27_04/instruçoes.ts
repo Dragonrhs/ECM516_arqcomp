@@ -22,3 +22,8 @@
 
 //npm run build
 //npm start
+
+
+//dps
+//npm i axios express
+//npm i @types/express --save-dev
