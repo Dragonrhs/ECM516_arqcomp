@@ -27,3 +27,8 @@
 //dps
 //npm i axios express
 //npm i @types/express --save-dev
+
+
+//servidor
+//npm i ts-node --save-dev
+//npm run start:dev
