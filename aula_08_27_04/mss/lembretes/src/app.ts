@@ -1,7 +1,18 @@
+
+import dotenv from 'dotenv'
 import express from 'express'
 import axios from 'axios'
+
+dotenv.config()
 const app = express()
 app.use(express.json())
+
+
+
+
+const{
+    PORT 
+} = process.env
 
 /* base
     {
@@ -48,6 +59,4 @@ const lembretes: Record<string, Lembrete> = {
     })  
 
 
-
-const PORT: number = 4000
 app.listen(PORT, () => console.log(`Lembretes. Porta ${PORT}.`))
