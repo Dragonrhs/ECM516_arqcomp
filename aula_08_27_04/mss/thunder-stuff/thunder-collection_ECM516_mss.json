@@ -1,7 +1,7 @@
 {
     "client": "Thunder Client",
     "collectionName": "ECM516_mss",
-    "dateExported": "2024-04-27T13:36:33.005Z",
+    "dateExported": "2024-04-27T15:53:57.938Z",
     "version": "1.1",
     "folders": [
         {
@@ -10,6 +10,13 @@
             "containerId": "",
             "created": "2024-04-27T13:28:45.200Z",
             "sortNum": 10000
+        },
+        {
+            "_id": "4f2763e7-9aa7-4edf-b3cc-f2513109af10",
+            "name": "observacoes",
+            "containerId": "",
+            "created": "2024-04-27T15:41:26.753Z",
+            "sortNum": 20000
         }
     ],
     "requests": [
@@ -22,7 +29,7 @@
             "method": "GET",
             "sortNum": 10000,
             "created": "2024-04-27T13:25:39.154Z",
-            "modified": "2024-04-27T13:29:05.054Z",
+            "modified": "2024-04-27T13:44:00.927Z",
             "headers": [],
             "params": [],
             "tests": []
@@ -36,14 +43,101 @@
             "method": "POST",
             "sortNum": 40000,
             "created": "2024-04-27T13:34:12.927Z",
-            "modified": "2024-04-27T13:34:46.087Z",
+            "modified": "2024-04-27T13:44:16.479Z",
             "headers": [],
             "params": [],
             "body": {
                 "type": "json",
-                "raw": "{\n  \"texto\" = \"safdsa\"\n}",
+                "raw": "{\n  \"texto\" : \"teste\"\n}",
                 "form": []
             },
+            "tests": []
+        },
+        {
+            "_id": "b370df81-e2b1-4a65-bfd4-b0fc1accc75e",
+            "colId": "47e0ef5d-8a90-4a1f-a46c-4076a1f4b2df",
+            "containerId": "3af4732b-badf-4ed5-ac8a-8d1863b30a28",
+            "name": "update do lembrete",
+            "url": "",
+            "method": "GET",
+            "sortNum": 50000,
+            "created": "2024-04-27T14:06:06.676Z",
+            "modified": "2024-04-27T14:06:06.676Z",
+            "headers": []
+        },
+        {
+            "_id": "9719b7b5-92d8-4e9e-8336-966a2d2f2d17",
+            "colId": "47e0ef5d-8a90-4a1f-a46c-4076a1f4b2df",
+            "containerId": "4f2763e7-9aa7-4edf-b3cc-f2513109af10",
+            "name": "obter observacoes",
+            "url": "localhost:4000/observacoes",
+            "method": "GET",
+            "sortNum": 70000,
+            "created": "2024-04-27T15:41:46.623Z",
+            "modified": "2024-04-27T15:42:11.227Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "9071d278-e323-471f-8c9d-b5aee33dd1ec",
+            "colId": "47e0ef5d-8a90-4a1f-a46c-4076a1f4b2df",
+            "containerId": "4f2763e7-9aa7-4edf-b3cc-f2513109af10",
+            "name": "salvar observacoes",
+            "url": "localhost:4000/observacoes",
+            "method": "POST",
+            "sortNum": 80000,
+            "created": "2024-04-27T15:42:27.964Z",
+            "modified": "2024-04-27T15:43:02.792Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \n  \"texto\":\"teste\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "c6bc0b9b-c2b3-4687-90aa-687b355d8a2a",
+            "colId": "47e0ef5d-8a90-4a1f-a46c-4076a1f4b2df",
+            "containerId": "4f2763e7-9aa7-4edf-b3cc-f2513109af10",
+            "name": "update observaçoes",
+            "url": "localhost:4000/observacoes",
+            "method": "PUT",
+            "sortNum": 90000,
+            "created": "2024-04-27T15:44:12.108Z",
+            "modified": "2024-04-27T15:44:23.861Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "ea4fd4bd-3969-4f82-9a1e-b4e8c17c4b7a",
+            "colId": "47e0ef5d-8a90-4a1f-a46c-4076a1f4b2df",
+            "containerId": "3af4732b-badf-4ed5-ac8a-8d1863b30a28",
+            "name": "deletar lembrete",
+            "url": "localhost:4000/lembretes",
+            "method": "DELETE",
+            "sortNum": 100000,
+            "created": "2024-04-27T15:44:46.892Z",
+            "modified": "2024-04-27T15:44:56.143Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "78c6f210-627c-4bec-8036-69621fa4c897",
+            "colId": "47e0ef5d-8a90-4a1f-a46c-4076a1f4b2df",
+            "containerId": "4f2763e7-9aa7-4edf-b3cc-f2513109af10",
+            "name": "deletar observacoes",
+            "url": "localhost:4000/observacoes",
+            "method": "DELETE",
+            "sortNum": 110000,
+            "created": "2024-04-27T15:45:11.453Z",
+            "modified": "2024-04-27T15:45:58.253Z",
+            "headers": [],
+            "params": [],
             "tests": []
         }
     ]
