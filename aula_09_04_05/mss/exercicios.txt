@@ -1,0 +1,11 @@
+27/04/2024 - 02
+- Trabalhar no mss de observações
+- Definir a base como lista
+- Definir o tipo que descreve o que é uma observação: id, texto, lembreteId
+- Usar uuid para o id de observação
+- Fazer endpoints POST e GET /lembretes/1/observacoes
+- Fazer os Thunder tests
+
+27/04/2024 - 01
+- Fazer a rota para update, incluindo o Thunder test
+- Fazer a rota para delete, incluindo o Thunder test
