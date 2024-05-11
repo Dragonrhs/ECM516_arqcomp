@@ -14,7 +14,7 @@ const funcoes: Record<string,Function> = {
     ObservacaoCriada: (observacao: Observacao) => {
         const observacoes = baseconsolidada[observacao.lembreteid]?.observacoes || [];
         observacoes.push(observacao);
-        baseConsolidada[observacao.lembreteid]['observacoes'] = observacoes;
+        baseconsolidada[observacao.lembreteid]['observacoes'] = observacoes;
     }
 }
 
@@ -35,22 +35,24 @@ const baseconsolidada: Record<string, Lembrete> = {};
 
 app.get('/lembrete', (req, res) => {
     res.status(200).json(baseconsolidada);
-}
+});
 
 app.post('/eventos', (req, res) => {
     //violando o principio aberto/fechado 
     //if evento === 'LembreteCriado'
     //...
     //else if evento === ObservacaoCriada 
+    try {
+        const evento = req.body;
+        console.log(evento);
+        funcoes[evento.tipo](evento.payload);
+    }
+    catch (e) {
 
-    const evento = req.body;
-    console.log(evento);
-    funcoes[evento.tipo](evento.payload);
-}
-catch (e) {
 
-}
+    }
+});
 
 app.listen(PORT, () => {
     console.log(`Server is running at http://localhost:${PORT}`);
-}
+});
