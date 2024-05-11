@@ -1,0 +1,2 @@
+clonar o modelo do github 20241_maua_ecm516_typescript 
+https://github.com/professorbossini/20241_maua_ecm516_typescript_modelo.git
