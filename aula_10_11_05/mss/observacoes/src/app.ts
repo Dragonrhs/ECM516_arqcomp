@@ -39,11 +39,9 @@ app.post('/lembretes/:id/observacoes', async (req, res) => {
   console.log ({idObs, texto, lembreteId: req.params.id})
   //emissao do evento
   axios.post('http://localhost:10000/eventos', {
-    tipo: "ObservacaoCriada",
+    type: "ObservacaoCriada",
     payload: {
-      id: idObs,
-      texto,
-      lembreteId: req.params.id
+      observacao,
     }
   })
 })
