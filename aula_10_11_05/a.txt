@@ -1,2 +1,3 @@
 clonar o modelo do github 20241_maua_ecm516_typescript 
 https://github.com/professorbossini/20241_maua_ecm516_typescript_modelo.git
+apostila de microserviços +- seçao 4 parando na 4.3.40  
