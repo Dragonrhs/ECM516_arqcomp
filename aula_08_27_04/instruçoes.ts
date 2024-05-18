@@ -7,7 +7,12 @@
 //npx tsc --init
 //npm init -y
 //no tsconfig descomenta "outDir":  e adiciona "./dist", 
-//no package json fazer algo
+//no package json 
+// "main": "app.js",
+//   "scripts": {
+//     "test": "echo \"Error: no test specified\" && exit 1",
+//     "build": "tsc",
+//     "start": "node dist/app.js"
 
 // "main": "app.js",
 //   "dependencies": {
