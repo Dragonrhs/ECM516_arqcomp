@@ -1,58 +1,67 @@
-import dotenv from 'dotenv';
-dotenv.config();
-import express from 'express';
-const app = express();
-app.use(express.json());
+import dotenv from 'dotenv'
+dotenv.config()
+import express from 'express'
+const app = express()
+app.use(express.json())
 
-const { PORT } = process.env;
+const { 
+  PORT 
+} = process.env
 
 
-const funcoes: Record<string,Function> = {
-    LembreteCriado: (lembrete: Lembrete) => {
-        baseconsolidada[lembrete.id] = lembrete;
-    },
-    ObservacaoCriada: (observacao: Observacao) => {
-        const observacoes = baseconsolidada[observacao.lembreteid]?.observacoes || [];
-        observacoes.push(observacao);
-        baseconsolidada[observacao.lembreteid]['observacoes'] = observacoes;
-    }
+const funcoes: Record < string, Function >= {
+  LembreteCriado: (lembrete: Lembrete) => {
+    baseConsolidada[lembrete.id] = lembrete
+  },
+  ObservacaoCriada: (observacao: Observacao) => {
+    const observacoes = baseConsolidada[observacao.lembreteId]['observacoes'] || []
+    observacoes.push(observacao)
+    baseConsolidada[observacao.lembreteId]['observacoes'] = observacoes
+  },
+  ObservacaoAtualizada: (observacao: Observacao) => {
+    const observacoes = baseConsolidada[observacao.lembreteId]['observacoes'] || []
+    let i = observacoes.findIndex((value: Observacao, index: number, obj: Observacao[]) => value.id === observacao.id)
+    observacoes[i].classificacao = observacao.classificacao
+    baseConsolidada[observacao.lembreteId]['observacoes'] = observacoes 
+  }
 }
 
 interface Observacao{
-    id: string;
-    texto: string;
-    lembreteid: string;
+  id: string;
+  texto: string;
+  lembreteId: string;
+  classificacao: string;
 }
 
 interface Lembrete{
-    id: string;
-    texto: string;
-    observacoes?: Observacao[];
+  id: string;
+  texto: string;
+  observacoes?: Observacao[]
 }
 
+const baseConsolidada: Record <string, Lembrete> = {}
 
-const baseconsolidada: Record<string, Lembrete> = {};
-
-app.get('/lembrete', (req, res) => {
-    res.status(200).json(baseconsolidada);
-});
+app.get('/lembretes', function(req, res) {
+  res.status(200).json(baseConsolidada)
+})
 
 app.post('/eventos', (req, res) => {
-    //violando o principio aberto/fechado 
-    //if evento === 'LembreteCriado'
-    //...
-    //else if evento === ObservacaoCriada 
-    try {
-        const evento = req.body;
-        console.log(evento);
-        funcoes[evento.tipo](evento.payload);
-    }
-    catch (e) {
+  try{
+    const evento = req.body
+    console.log(evento)
+    funcoes[evento.type](evento.payload)
+  } 
+  catch(e){} //descarte de evento não interessante
+  res.end()
+  //principio aberto/fechado
+  // if evento === LembreteCriado
+  //   ...
+  // else if evento === ObservacaoCriada
+
+  // else if evento === ObservacaoAtualizada
 
 
-    }
-});
+})
 
-app.listen(PORT, () => {
-    console.log(`Server is running at http://localhost:${PORT}`);
-});
+
+app.listen(PORT, () => console.log(`Consulta. Porta ${PORT}`))

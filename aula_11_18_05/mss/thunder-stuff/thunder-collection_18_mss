@@ -1,0 +1,89 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "mss",
+    "dateExported": "2024-05-18T14:11:49.834Z",
+    "version": "1.1",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "4efac25b-b8a4-48ee-a5d8-958d717582d7",
+            "colId": "76f54a6a-b8a0-46f8-89f4-261f8fe38a39",
+            "containerId": "",
+            "name": "novo lembrete",
+            "url": "localhost:4000/lembretes",
+            "method": "POST",
+            "sortNum": 10000,
+            "created": "2024-05-18T13:25:56.867Z",
+            "modified": "2024-05-18T13:35:41.932Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"texto\": \"Fazer classificacao\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "e0ddb56c-60ee-4f68-b9bd-bec34f63522e",
+            "colId": "76f54a6a-b8a0-46f8-89f4-261f8fe38a39",
+            "containerId": "",
+            "name": "get lembrete",
+            "url": "localhost:4000/lembretes",
+            "method": "GET",
+            "sortNum": 15000,
+            "created": "2024-05-18T13:35:57.759Z",
+            "modified": "2024-05-18T13:36:26.799Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "b363e6e4-d9d0-4993-9899-84ca2c39455d",
+            "colId": "76f54a6a-b8a0-46f8-89f4-261f8fe38a39",
+            "containerId": "",
+            "name": "nova observacao",
+            "url": "localhost:5000/lembretes/1/observacoes",
+            "method": "POST",
+            "sortNum": 20000,
+            "created": "2024-05-18T13:29:19.300Z",
+            "modified": "2024-05-18T14:11:02.160Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"texto\":\"aaaaa\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "c3671bc5-205c-48cf-bbdc-3df6d84577b6",
+            "colId": "76f54a6a-b8a0-46f8-89f4-261f8fe38a39",
+            "containerId": "",
+            "name": "get observacoes",
+            "url": "localhost:5000/lembretes/1/observacoes",
+            "method": "GET",
+            "sortNum": 25000,
+            "created": "2024-05-18T14:00:14.875Z",
+            "modified": "2024-05-18T14:11:10.681Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "ef4ad0ea-166b-4580-9038-3fb97d027c1d",
+            "colId": "76f54a6a-b8a0-46f8-89f4-261f8fe38a39",
+            "containerId": "",
+            "name": "consulta lembretes",
+            "url": "localhost:7000/lembretes",
+            "method": "GET",
+            "sortNum": 30000,
+            "created": "2024-05-18T13:31:35.572Z",
+            "modified": "2024-05-18T13:31:45.828Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        }
+    ]
+}

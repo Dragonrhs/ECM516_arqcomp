@@ -1,22 +1,21 @@
-import express from 'express'
-import axios from 'axios'
 import dotenv from 'dotenv'
+dotenv.config()
+import express from 'express'
+import axios, { AxiosError } from 'axios'
 import { v4 as uuidv4 } from 'uuid'
 const app = express()
 app.use(express.json())
 
-dotenv.config()
-const {PORT} = process.env
+const { PORT } = process.env
 
-interface Observacao {
-  id: string
-  texto: string
+interface Observacao{
+  id: string;
+  texto: string;
+  lembreteId: string;
+  classificacao: string;
 }
 
-const base: Record <string, Observacao[]> = {} 
-
-
-
+const base: Record <string, Observacao[]> = {}
 /*A base é uma lista
   Uma observação é assim:
 
@@ -27,33 +26,57 @@ const base: Record <string, Observacao[]> = {}
   }
 */
 
+/*
+  {
+    "1": [
+      {id: 1, texto: oi}
+    ]
+  }
+*/
+
+const funcoes: Record < string, Function >= {
+  ObservacaoClassificada: (observacao: Observacao) => {
+    const observacoes: Observacao[] = base[observacao.lembreteId] || []
+    let i = observacoes.findIndex((value: Observacao, index: number, obj: Observacao[]) => value.id === observacao.id)
+    console.log("aaaa" + i)
+    observacoes[i].classificacao = observacao.classificacao
+    base[observacao.lembreteId] = observacoes
+    axios.post('http://localhost:10000/eventos', {
+      type: 'ObservacaoAtualizada',
+      payload: observacao 
+    })
+  }
+}
+
 //POST /lembretes/1/observacoes cadastra uma observação
-app.post('/lembretes/:id/observacoes', async (req, res) => {
+app.post('/lembretes/:id/observacoes', (req, res) => {
   const idObs = uuidv4()
   const { texto } = req.body
   const observacoes: Observacao[] = base[req.params.id] || []
-  const observacao: Observacao = {id: idObs, texto}
+  const observacao: Observacao = {id: idObs, texto, lembreteId: req.params.id, classificacao:'Aguardando'}
   observacoes.push(observacao)
   base[req.params.id] = observacoes
-  res.status(201).send(observacao)
-  console.log ({idObs, texto, lembreteId: req.params.id})
-  //emissao do evento
   axios.post('http://localhost:10000/eventos', {
-    type: "ObservacaoCriada",
-    payload: {
-      observacao,
-    }
+    type: 'ObservacaoCriada',
+    payload: observacao
   })
+  res.status(201).json(observacao)
 })
-
 //GET /lembretes/1/observacoes obtem a lista de observacoes do lembrete 1
-app.get('/lembretes/:id/observacoes', async (req, res) => {
-  res.status(200).send(base[req.params.id] || [])
+app.get('/lembretes/:id/observacoes', (req, res) => {
+  res.status(200).json(base[req.params.id] || [])
 })
 
-app.post('/eventos', async (req, res) => {
-  console.log(req.body)
-  res.status(200).send({msg: 'ok'})
+app.post('/eventos', (req, res) => {
+  try{
+    console.log(req.body)
+    const evento = req.body
+    funcoes[evento.type](evento.payload)
+    }
+
+  catch(e){} //descarte de eventos que não são de interesse
+  res.end()
 })
 
-app.listen(PORT, ()=> console.log(`Observacoes. Porta: ${PORT}`))
+class Seila extends Error{}
+app.listen(PORT, () => console.log(`Observacoes. Porta: ${PORT}.`))
